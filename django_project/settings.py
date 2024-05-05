@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     'accounts',
     'crispy_forms',
     'crispy_bootstrap5',
+    'articles',
 ]
-
+TIME_ZONE = "America/New_York"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -128,7 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECTURL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 
 

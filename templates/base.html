@@ -7,6 +7,10 @@
 </head>
 <body>
   <main>
+    <nav> {% if user.is_authenticated %}
+      <li><a href="{% url 'article_new' %}"
+        class="nav-link px-2 link-dark">+ New</a></li></nav>
+        {% endif %}
     {% block content %}
     {% endblock content %}
   </main>
