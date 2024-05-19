@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView  # new
 from django.views.generic.edit import UpdateView, DeleteView, CreateView # new
 from django.urls import reverse_lazy  # new
 from .models import Article
+from .forms import CommentForm  # new
 
 
 class ArticleListView(LoginRequiredMixin,ListView):
@@ -49,3 +50,14 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):  # new
     def form_valid(self, form):  # new
         form.instance.author = self.request.user
         return super().form_valid(form)
+    
+    
+
+class ArticleDetailView(LoginRequiredMixin, DetailView):
+    model = Article
+    template_name = "article_detail.html"
+
+    def get_context_data(self, **kwargs):  # new
+          context = super().get_context_data(**kwargs)
+          context['form'] = CommentForm()
+          return context
